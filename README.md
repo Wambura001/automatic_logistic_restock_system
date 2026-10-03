@@ -1,13 +1,15 @@
-# Smart Inventory Stockout & Reorder Alert System
+# Automatic Inventory Stockout & Reorder Alert System
 
-## 📌 Project Overview
+![automessage](assets/automessage.png)
+![KPI](assets/powerbi.png)
+## Project Overview
 In large-scale warehouse operations, balancing stock availability against carrying costs is a critical financial challenge. Stagnant inventory ties up working capital, while unexpected stockouts halt logistics pipelines and lead to unfulfilled orders.
 
 This project implements an end-to-end **Data Engineering, Business Intelligence, and Logistics Automation Pipeline**. It ingests raw logistics logs into a local relational database, models the data using an enterprise star schema, calculates real-time supply chain operational risk values using advanced DAX measures, and deploys a Python background engine to automate reorder warnings for procurement teams.
 
 ---
 
-## 🛠️ Tech Stack & Architecture
+## Tech Stack & Architecture
 
 ### Tools Used
 *   **Database Tier:** Microsoft SQL Server (Dev Instance) & SQL Server Management Studio (SSMS)
@@ -24,9 +26,11 @@ This project implements an end-to-end **Data Engineering, Business Intelligence,
 
 ---
 
-## 📐 Data Modeling & Schema Design
+## Data Modeling & Schema Design
 
 The core data tier is structured using a clean **Star Schema** to ensure fast reporting performance and to eliminate redundant data.
+
+![tables](assets/sql.png)
 
 1.  **InventoryMaster (Dimension Table):** Stores invariant static details about each SKU (Product Name, Category, Base Unit Cost, and the business-defined Safety Stock Threshold).
 2.  **DailyStockLog (Fact Table):** Stores a granular time-series ledger capturing daily operational balances, items sold, and inbound quantities received over time.
@@ -36,7 +40,7 @@ The core data tier is structured using a clean **Star Schema** to ensure fast re
 
 ---
 
-## 🛑 Challenges Faced & Technical Solutions
+## Challenges Faced & Technical Solutions
 
 ### Challenge 1: Local System Service Access Mismatches
 *   **The Problem:** Initial connection queries between the client GUI (SSMS) and the newly configured server instance failed with persistent cryptographic verification errors and encryption mandatory restrictions (`Error 40 / Error 2`).
@@ -70,7 +74,7 @@ SUMX(
 
 ---
 
-## 📈 Project Impact & Business Value
+## Project Impact & Business Value
 
 Deploying this centralized data solution removes human error from the inventory monitoring chain and produces measurable logistics benefits:
 
@@ -80,7 +84,7 @@ Deploying this centralized data solution removes human error from the inventory 
 
 ---
 
-## 💻 How to Run the Project Locally
+## How to Run the Project Locally
 
 ### 1. Database Initialization
 Open SSMS, connect to your active database instance (`localhost`), and create the core storage framework:
